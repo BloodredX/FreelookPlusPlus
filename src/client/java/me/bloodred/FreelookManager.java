@@ -1,5 +1,6 @@
 package me.bloodred;
 
+import me.bloodred.config.FreelookConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.player.LocalPlayer;
@@ -14,10 +15,11 @@ public class FreelookManager {
     private float cameraPitch = 0.0f;
     private boolean firstTime = true;
     
-    private float sensitivity = 1.0f;
-    private boolean invertY = false;
+    private FreelookConfig config;
     
-    private FreelookManager() {}
+    private FreelookManager() {
+        this.config = FreelookConfig.load();
+    }
     
     public static FreelookManager getInstance() {
         if (instance == null) {
@@ -62,7 +64,7 @@ public class FreelookManager {
         
         originalPerspective = mc.options.getCameraType();
         
-        if (originalPerspective == CameraType.FIRST_PERSON) {
+        if (config.isAutoThirdPerson() && originalPerspective == CameraType.FIRST_PERSON) {
             mc.options.setCameraType(CameraType.THIRD_PERSON_BACK);
         }
     }
@@ -95,12 +97,12 @@ public class FreelookManager {
             firstTime = false;
         }
         
-        float mouseSensitivity = mc.options.sensitivity().get().floatValue() * sensitivity;
+        float mouseSensitivity = mc.options.sensitivity().get().floatValue() * config.getSensitivity();
         
         float pitchDelta = (float) (deltaY * 0.15 * mouseSensitivity);
         float yawDelta = (float) (deltaX * 0.15 * mouseSensitivity);
         
-        if (invertY) {
+        if (config.isInvertY()) {
             pitchDelta = -pitchDelta;
         }
         
@@ -128,19 +130,7 @@ public class FreelookManager {
         this.firstTime = firstTime;
     }
     
-    public void setSensitivity(float sensitivity) {
-        this.sensitivity = Math.max(0.1f, Math.min(3.0f, sensitivity));
-    }
-    
-    public float getSensitivity() {
-        return sensitivity;
-    }
-    
-    public void setInvertY(boolean invertY) {
-        this.invertY = invertY;
-    }
-    
-    public boolean isInvertY() {
-        return invertY;
+    public FreelookConfig getConfig() {
+        return config;
     }
 }

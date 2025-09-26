@@ -18,4 +18,10 @@ public class FreelookKeyBindings {
         GLFW.GLFW_KEY_F6,
         CATEGORY
     ));
+    
+    public static final KeyMapping FREELOOK_CONFIG = KeyBindingHelper.registerKeyBinding(new KeyMapping(
+        "key.freelookplusplus.config",
+        GLFW.GLFW_KEY_F7,
+        CATEGORY
+    ));
 }

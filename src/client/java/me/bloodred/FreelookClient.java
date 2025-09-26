@@ -1,5 +1,6 @@
 package me.bloodred;
 
+import me.bloodred.config.FreelookConfigScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ public class FreelookClient implements ClientModInitializer {
 		
 		FreelookKeyBindings.FREELOOK_KEY.getClass();
 		FreelookKeyBindings.FREELOOK_TOGGLE.getClass();
+		FreelookKeyBindings.FREELOOK_CONFIG.getClass();
 		
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (client.player == null || client.screen != null) return;
@@ -23,6 +25,10 @@ public class FreelookClient implements ClientModInitializer {
 			
 			while (FreelookKeyBindings.FREELOOK_TOGGLE.consumeClick()) {
 				manager.toggleFreelook();
+			}
+			
+			while (FreelookKeyBindings.FREELOOK_CONFIG.consumeClick()) {
+				client.setScreen(new FreelookConfigScreen(client.screen, manager.getConfig()));
 			}
 			
 			boolean freelookKeyPressed = FreelookKeyBindings.FREELOOK_KEY.isDown();
