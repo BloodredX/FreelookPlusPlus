@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "freelookplusplus",
+	"version": "${version}",
+	"name": "Freelook++",
+	"description": "Enhanced freelook mod with improved camera controls and features for better gameplay experience.",
+	"authors": [
+		"BloodredX"
+	],
+	"contact": {
+		"homepage": "https://github.com/BloodredX/FreelookPlusPlus",
+		"sources": "https://github.com/BloodredX/FreelookPlusPlus"
+	},
+	"license": "MIT",
+	"icon": "assets/freelookplusplus/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"me.bloodred.FreelookClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "freelookplusplus.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.8",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
