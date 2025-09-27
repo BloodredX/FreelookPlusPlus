@@ -14,9 +14,9 @@ public class FreelookClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		LOGGER.info("Initializing Freelook++ client");
 		
-		FreelookKeyBindings.FREELOOK_KEY.getClass();
-		FreelookKeyBindings.FREELOOK_TOGGLE.getClass();
-		FreelookKeyBindings.FREELOOK_CONFIG.getClass();
+		LOGGER.info("Registering keybindings...");
+		FreelookKeyBindings.initialize();
+		LOGGER.info("Keybindings registered successfully");
 		
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (client.player == null || client.screen != null) return;
