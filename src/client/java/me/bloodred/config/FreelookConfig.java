@@ -16,6 +16,7 @@ public class FreelookConfig {
     public boolean invertY = false;
     public boolean smoothTransition = true;
     public boolean autoThirdPerson = true;
+    public PerspectiveToggleBehavior perspectiveToggleBehavior = PerspectiveToggleBehavior.DO_NOTHING;
     
     public static FreelookConfig load() {
         if (Files.exists(CONFIG_PATH)) {
@@ -72,5 +73,13 @@ public class FreelookConfig {
     
     public void setAutoThirdPerson(boolean autoThirdPerson) {
         this.autoThirdPerson = autoThirdPerson;
+    }
+    
+    public PerspectiveToggleBehavior getPerspectiveToggleBehavior() {
+        return perspectiveToggleBehavior != null ? perspectiveToggleBehavior : PerspectiveToggleBehavior.DO_NOTHING;
+    }
+    
+    public void setPerspectiveToggleBehavior(PerspectiveToggleBehavior perspectiveToggleBehavior) {
+        this.perspectiveToggleBehavior = perspectiveToggleBehavior;
     }
 }

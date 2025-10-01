@@ -18,6 +18,7 @@ public class FreelookConfigScreen extends Screen {
     private CycleButton<Boolean> invertYButton;
     private CycleButton<Boolean> smoothTransitionButton;
     private CycleButton<Boolean> autoThirdPersonButton;
+    private CycleButton<PerspectiveToggleBehavior> perspectiveToggleBehaviorButton;
     
     public FreelookConfigScreen(Screen parent, FreelookConfig config) {
         super(Component.literal("Freelook++ Configuration"));
@@ -52,10 +53,18 @@ public class FreelookConfigScreen extends Screen {
                 (button, value) -> config.setAutoThirdPerson(value));
         addRenderableWidget(autoThirdPersonButton);
         
+        perspectiveToggleBehaviorButton = CycleButton.<PerspectiveToggleBehavior>builder(value -> Component.translatable("config.freelookplusplus.perspective_toggle_behavior." + value.name().toLowerCase()))
+            .withValues(PerspectiveToggleBehavior.values())
+            .withInitialValue(config.getPerspectiveToggleBehavior())
+            .create(centerX - 100, startY + spacing * 4, 200, 20,
+                Component.translatable("config.freelookplusplus.perspective_toggle_behavior"),
+                (button, value) -> config.setPerspectiveToggleBehavior(value));
+        addRenderableWidget(perspectiveToggleBehaviorButton);
+        
         addRenderableWidget(Button.builder(Component.literal("Done"), button -> {
             config.save();
             onClose();
-        }).bounds(centerX - 100, startY + spacing * 5, 200, 20).build());
+        }).bounds(centerX - 100, startY + spacing * 6, 200, 20).build());
     }
     
     @Override
@@ -68,6 +77,7 @@ public class FreelookConfigScreen extends Screen {
         guiGraphics.drawString(font, "Invert Y Axis", this.width / 2 - 100, 75, 0xFFFFFF);
         guiGraphics.drawString(font, "Smooth Transition", this.width / 2 - 100, 105, 0xFFFFFF);
         guiGraphics.drawString(font, "Auto Third Person", this.width / 2 - 100, 135, 0xFFFFFF);
+        guiGraphics.drawString(font, Component.translatable("config.freelookplusplus.perspective_toggle_behavior").getString(), this.width / 2 - 100, 165, 0xFFFFFF);
     }
     
     @Override

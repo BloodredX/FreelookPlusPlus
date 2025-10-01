@@ -133,4 +133,22 @@ public class FreelookManager {
     public FreelookConfig getConfig() {
         return config;
     }
+    
+    public boolean isToggleMode() {
+        return toggleMode;
+    }
+    
+    public void handlePerspectiveToggle() {
+        if (freelookEnabled && toggleMode) {
+            switch (config.getPerspectiveToggleBehavior()) {
+                case DEACTIVATE_FREELOOK:
+                    disableFreelook();
+                    break;
+                case DO_NOTHING:
+                default:
+                    // Do nothing - perspective toggle is ignored
+                    break;
+            }
+        }
+    }
 }

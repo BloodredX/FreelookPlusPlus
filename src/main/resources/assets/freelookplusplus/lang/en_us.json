@@ -2,5 +2,8 @@
   "key.category.freelookplusplus.general": "Freelook++",
   "key.freelookplusplus.freelook": "Freelook (Hold)",
   "key.freelookplusplus.toggle": "Toggle Freelook",
-  "key.freelookplusplus.config": "Open Config"
+  "key.freelookplusplus.config": "Open Config",
+  "config.freelookplusplus.perspective_toggle_behavior": "Perspective Toggle Behavior",
+  "config.freelookplusplus.perspective_toggle_behavior.do_nothing": "Do Nothing",
+  "config.freelookplusplus.perspective_toggle_behavior.deactivate_freelook": "Deactivate Freelook"
 }
