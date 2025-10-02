@@ -6,6 +6,7 @@ A client-side Fabric mod that enhances the freelook experience in Minecraft with
 
 - **Hold to Freelook**: Hold Left Alt to temporarily enable freelook mode
 - **Toggle Freelook**: Press F6 to toggle freelook mode on/off
+- **Perspective Toggle Control**: Configure what happens when you try to change perspective (F5) while freelook is toggled
 - **Configuration Screen**: Press F7 to access comprehensive settings
 - **Smooth Camera Movement**: Enhanced camera controls with configurable sensitivity
 - **Customizable Settings**: Adjust sensitivity, invert Y-axis, and more
@@ -37,13 +38,19 @@ The mod includes a comprehensive configuration system accessible via the F7 key 
 - **Invert Y Axis**: Invert vertical mouse movement
 - **Smooth Transition**: Enable smooth camera transitions
 - **Auto Third Person**: Automatically switch to third person when freelook is enabled
+- **Perspective Toggle Behavior**: Choose what happens when you press F5 while freelook is toggled:
+  - **Do Nothing**: Ignore perspective toggle (default)
+  - **Deactivate Freelook**: Turn off freelook when perspective is toggled
+
+**Note**: This setting only affects toggled freelook (F6), not held freelook (Left Alt).
 
 **Configuration File**: Settings are automatically saved to `.minecraft/config/freelookplusplus.json`
 
 ## Compatibility
 
-- **Minecraft Version**: 1.21.8
-- **Fabric Loader**: 0.17.2 or higher
+- **Minecraft Version**: Latest supported versions (updated regularly)
+- **Fabric Loader**: Latest compatible version
+- **Fabric API**: Required
 - **Java**: 21 or higher
 - **Environment**: Client-side only
 
